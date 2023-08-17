@@ -1,41 +1,45 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <ctype.h>
-#include <string.h>
-
+#include<stdio.h>
+#include<stdlib.h>
+#include<ctype.h>
 /**
- * check_num - check - string there are digit.
- * @str: array str
- *
- * Return: Always 0.
- */
-int main(int argc, char *argv[]) 
+* main - function, entry point
+* @argc: # of args passed
+* @argv: strings passed indiv as arg to prog
+*
+* Description: program that adds positive numbers
+* Return: 0, 1 if number contains symbol !digits
+*/
+int main(int argc, char *argv[])
 {
-int sum = 0;
+	int i, j, val = 0;
 
-for (int i = 1; i < argc; i++) 
-{
-for (int j = 0; argv[i][j] != '\0'; j++) 
-{
-if (!isdigit(argv[i][j])) 
-{
-printf("Error\n");
-return (1);
-}
-}
-
-int num = atoi(argv[i]);
-
-if (num <= 0) 
-{
-printf("Error\n");
-return (1);
-}
-
-sum += num;
-}
-
-printf("%d\n", sum);
-
-return (0);
+	if (argc == 1)
+	{
+		printf("0\n");
+	}
+	else if (argc < 3)
+	{
+		printf("Error\n");
+		return (1);
+	}
+	else
+	{
+		for (i = 1; i < argc; i++)
+		{
+			for (j = 0; argv[i][j]; j++)
+			{
+				if (argv[i][j] > '0' || argv[i][j] > '9')
+				{
+					printf("Error\n");
+					return (1);
+				}
+				else
+				{
+					val += atoi(argv[i]);
+				}
+			}
+			printf("%d\n", val);
+		}
+	}
+	return (0);
 }
